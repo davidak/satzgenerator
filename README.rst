@@ -6,8 +6,8 @@ Dabei entstehen zufällige und absurde Sätze. Das war immer sehr witzig.
 
 Als ich älter war und Programmieren gelernt habe wurde es gleich als Programm umgesetzt.
 
-Erst in Perl, dann Python, waraus https://satzgenerator.de/ entstanden ist.
+Erst in Perl, dann Python, woraus https://satzgenerator.de/ entstanden ist.
 
 Mittlerweile ist der Satzgenerator sowas wie mein persönliches `Hallo Welt-Programm <http://de.wikipedia.org/wiki/Hallo-Welt-Programm>`_.
 
-Hier werden Satzgeneratoren in verschiedenen Programmiersprachen gesammelt.
+Hier werden die Satzgeneratoren in verschiedenen Programmiersprachen gesammelt.
