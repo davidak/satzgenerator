@@ -22,6 +22,7 @@ Satzgenerator
 Referenzimplementierung
 """
 
+import sys
 import random as r
 
 # Textdateien einlesen, Zeilen in Liste
@@ -56,11 +57,21 @@ def person():
 
 # Satz generieren
 def satz():
-	return person() + ' ' + r.choice(verben) + ' ' + r.choice(adjektive) + ' ' + r.choice(orte) + '.'
+	return person() + ' ' + r.choice(verben) + ' ' + r.choice(adjektive) + ' ' + r.choice(orte) + '.\n'
 
-# Satz ausgeben
+# Sätze ausgeben
 def main():
-	s = satz()
+	# Anzahl als Parameter übergeben
+	try:
+		anzahl = int(sys.argv[1])
+	except:
+		anzahl = 1
+
+	s = ''
+
+	for i in range(anzahl):
+		s += satz()
+
 	print(s)
 
 if __name__ == "__main__":
