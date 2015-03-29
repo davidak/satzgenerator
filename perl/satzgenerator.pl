@@ -67,5 +67,16 @@ sub satz {
 }
 
 # Satz ausgeben
-my $s = satz();
+eval {
+	$anzahl = int($ARGV[0]);
+} or do {
+	$anzahl = 1;
+};
+
+$s = "";
+
+foreach my $i (1..$anzahl) {
+	$s .= satz();
+}
+
 print($s);
