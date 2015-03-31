@@ -20,4 +20,5 @@ Sprache       Sekunden
 Python 2.7    6
 Python 3.2    10
 Perl 5.8.9    3,5
+Genie         3,8
 ============  ========
