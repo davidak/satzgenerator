@@ -24,7 +24,7 @@ def lese (datei:string) : array of string
 // Arrays
 const beziehung_m : array of string = {"Vater", "Bruder", "Mann", "Sohn", "Onkel", "Opa", "Cousin", "Freund", "Kollege", "Mitbewohner"}
 const beziehung_w : array of string = {"Mutter", "Schwester", "Frau", "Tochter", "Tante", "Oma", "Cousine", "Freundin", "Kollegin", "Mitbewohnerin"}
-//const beziehung = beziehung_m, beziehung_w
+//const beziehung = beziehung_m + beziehung_w
 const possessivpronomen_m : array of string = {"Mein", "Dein", "Sein", "Ihr"}
 const spezial : array of string = {"Er", "Sie", "Jemand", "Niemand", "Ein Lehrer", "Ein Polizist", "Ein Beamter", "Ein Arzt", "Der Alkoholiker", "Ein normaler Mensch"}
 
@@ -35,7 +35,7 @@ def person (vornamen_m:array of string) : string
 	//print "%d", z
 	case z
 		when 1
-			// should be vormanen and beziehung as added m + w
+			// should be vornamen and beziehung as added m + w
 			s = vornamen_m[GLib.Random.int_range(0,vornamen_m.length)] + "s " + beziehung_m[GLib.Random.int_range(0,beziehung_m.length)]
 		when 2
 			s = possessivpronomen_m[GLib.Random.int_range(0,possessivpronomen_m.length)] + " " + beziehung_m[GLib.Random.int_range(0,beziehung_m.length)]
@@ -56,6 +56,7 @@ init
 
 	vornamen_m : array of string = lese("../data/vornamen_m.txt")
 	vornamen_w : array of string = lese("../data/vornamen_w.txt")
+	//vornamen = vornamen_m + vornamen_w
 	verben : array of string = lese("../data/verben.txt")
 	adjektive : array of string = lese("../data/adjektive.txt")
 	orte : array of string = lese("../data/orte.txt")
