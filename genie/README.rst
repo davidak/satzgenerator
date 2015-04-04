@@ -14,7 +14,6 @@ Ausführen
 ::
 
 	$ ./satzgenerator 1
-	Meine Freundin lernt niedlich auf dem Weg zur Schule.
 
 Bekannte Fehler
 ---------------
