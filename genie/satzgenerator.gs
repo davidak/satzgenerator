@@ -34,6 +34,9 @@ def person (vornamen_m:array of string) : string
 	s:string
 	//print "%d", z
 	case z
+		when 1
+			// should be vormanen and beziehung as added m + w
+			s = vornamen_m[GLib.Random.int_range(0,vornamen_m.length)] + "s " + beziehung_m[GLib.Random.int_range(0,beziehung_m.length)]
 		when 2
 			s = possessivpronomen_m[GLib.Random.int_range(0,possessivpronomen_m.length)] + " " + beziehung_m[GLib.Random.int_range(0,beziehung_m.length)]
 		when 3
