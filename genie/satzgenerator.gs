@@ -61,11 +61,9 @@ init
 	adjektive : array of string = lese("../data/adjektive.txt")
 	orte : array of string = lese("../data/orte.txt")
 
-	anzahl:int
-	try
+	anzahl:int = 1
+	if args.length >= 2
 		anzahl = int.parse(args[1])
-	except
-		anzahl = 1
 
 	for i:int = 1 to anzahl
 		p:string = person(vornamen_m)
