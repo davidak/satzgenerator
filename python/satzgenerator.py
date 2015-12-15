@@ -25,35 +25,39 @@ beziehung = beziehung_m + beziehung_w
 possessivpronomen_m = ['Mein', 'Dein', 'Sein', 'Ihr']
 spezial = ['Er', 'Sie', 'Jemand', 'Niemand', 'Ein Lehrer', 'Ein Polizist', 'Ein Beamter', 'Ein Arzt', 'Der Alkoholiker', 'Ein normaler Mensch']
 
+
 # Person generieren
 def person():
-	z = r.randint(1,6)
-	if z == 1:
-		_s = r.choice(vornamen) + 's ' + r.choice(beziehung)
-	elif z == 2:
-		_s = r.choice(possessivpronomen_m) + ' ' + r.choice(beziehung_m)
-	elif z == 3:
-		_s = r.choice(possessivpronomen_m) + 'e ' + r.choice(beziehung_w)
-	elif z == 4:
-		_s = r.choice(spezial)
-	else:
-		_s = r.choice(vornamen)
-	return _s
+    z = r.randint(1, 6)
+    if z == 1:
+        _s = r.choice(vornamen) + 's ' + r.choice(beziehung)
+    elif z == 2:
+        _s = r.choice(possessivpronomen_m) + ' ' + r.choice(beziehung_m)
+    elif z == 3:
+        _s = r.choice(possessivpronomen_m) + 'e ' + r.choice(beziehung_w)
+    elif z == 4:
+        _s = r.choice(spezial)
+    else:
+        _s = r.choice(vornamen)
+    return _s
+
 
 # Satz generieren
 def satz():
-	return person() + ' ' + r.choice(verben) + ' ' + r.choice(adjektive) + ' ' + r.choice(orte) + '.'
+    return person() + ' ' + r.choice(verben) + ' ' + r.choice(adjektive) + ' ' + r.choice(orte) + '.'
+
 
 # Sätze ausgeben
 def main():
-	# Anzahl als Parameter übergeben
-	try:
-		anzahl = int(sys.argv[1])
-	except:
-		anzahl = 1
+    # Anzahl als Parameter übergeben
+    try:
+        anzahl = int(sys.argv[1])
+    except:
+        anzahl = 1
 
-	for i in range(anzahl):
-		print(satz())
+    for i in range(anzahl):
+        print(satz())
+
 
 if __name__ == "__main__":
-	main()
+    main()
