@@ -17,8 +17,9 @@ Ergebnis
 ============  ========
 Sprache       Sekunden
 ============  ========
-Python 2.7    6
-Python 3.2    10
+Python 2.6    8,6
+Python 2.7    8,3
+Python 3.2    13
 Perl 5.8.9    3,5
 Genie         4,3
 Java          2,7
