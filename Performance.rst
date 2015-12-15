@@ -22,4 +22,5 @@ Python 3.2    10
 Perl 5.8.9    3,5
 Genie         4,3
 Java          2,7
+Crystal       1.8
 ============  ========
