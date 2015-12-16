@@ -21,7 +21,7 @@ Python 2.6     8,6
 Python 2.7     8,3
 Python 3.2     13,2
 PyPy 2         0,74
-PyPy 3         4,64
+PyPy 3         7,3
 Perl 5.8.9     3,5
 Genie          4,3
 Java           2,7
