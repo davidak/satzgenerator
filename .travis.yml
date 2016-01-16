@@ -1,9 +1,10 @@
 before_install:
-  - "grep 'model name' /proc/cpuinfo | head -1 | cut -f2 -d:"
+  - "grep 'model name' /proc/cpuinfo | head -1 | cut -f2 -d:" # cpu model
   - grep -c processor /proc/cpuinfo # cores
   - sudo add-apt-repository ppa:pypy/ppa -y
+  - sudo add-apt-repository ppa:vala-team/ppa -y
   - sudo apt-get update -qq
-  - sudo apt-get install -qq pypy
+  - sudo apt-get install -qq pypy valac
   - /usr/bin/env pypy --version
 install: true
 script:

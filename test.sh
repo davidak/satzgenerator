@@ -59,3 +59,15 @@ if [[ $ver == "v"* ]] ; then
 else
 	echo "Perl not installed"
 fi
+
+# Genie
+ver="$(valac --version)"
+if [[ $ver == "Vala "* ]] ; then
+	cd genie
+	starttime="$(date +%s%N)"
+	./satzgenerator 1000000 >/dev/null 2>&1
+	echo "Genie ($ver) |" $(duration $starttime)
+	cd ..
+else
+	echo "valac not installed"
+fi

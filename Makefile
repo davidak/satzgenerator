@@ -1,7 +1,9 @@
-all: python
+default: all
 
-python:
-	@(echo "Python must not get compiled.")
+genie:
+	@(cd genie ; valac satzgenerator.gs)
+
+all: genie
 
 test:
 	@(./test.sh)
