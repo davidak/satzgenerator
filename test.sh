@@ -93,14 +93,14 @@ if [[ $ver == "java "* ]] ; then
 	ver="$(java -version 2>&1 | grep version | cut -d '"' -f2)"
 	starttime="$(date +%s%N)"
 	java Satzgenerator 1000000 >/dev/null 2>&1
-	echo "Java ($ver) |" $(duration $starttime)
+	echo "Java $ver |" $(duration $starttime)
 	cd ..
 else
 	echo "Java not installed"
 fi
 
 # Crystal
-ver="$(crystal --version 2>&1 | cut -f1 -d'(')"
+ver="$(crystal --version 2>&1 | cut -f1 -d[ | cut -f1 -d'(')"
 if [[ $ver == "Crystal "* ]] ; then
 	cd crystal
 	starttime="$(date +%s%N)"
