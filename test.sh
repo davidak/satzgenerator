@@ -63,12 +63,13 @@ else
 fi
 
 # JRuby
-ver="$(jruby --version 2>&1 | cut -f1-3 -d' ')"
-if [[ $ver == "jruby "* ]] ; then
+ver="$(/usr/bin/env jruby -v 2>&1 | cut -f1-3 -d' ')"
+if [[ $ver == "jruby"* ]] ; then
 	cd ruby
 	starttime="$(date +%s%N)"
 	/usr/bin/env jruby satzgenerator.rb 1000000 >/dev/null 2>&1
 	echo "$ver |" $(duration $starttime)
+	/usr/bin/env jruby satzgenerator.rb 10
 	cd ..
 else
 	echo "JRuby not installed"
