@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash --login
 
 duration () {
 	# Nanoseconds only work in GNU date
@@ -64,12 +64,15 @@ fi
 
 # JRuby
 if [[ $TRAVIS == "true" ]]; then
-	rvm install jruby
-	jruby="/usr/bin/env ruby"
+	# workaround for https://github.com/travis-ci/travis-ci/issues/5477
+	export JRUBY_OPTS='--client -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -Xcext.enabled=false -J-Xss2m -Xcompile.invokedynamic=false'
+	rvm install jruby >/dev/null 2>&1
+	rvm use jruby >/dev/null
+	jruby="ruby"
 else
 	jruby="/usr/bin/env jruby"
 fi
-ver="$($jruby -v 2>&1 | cut -f1-3 -d' ')"
+ver="$($jruby --version 2>&1 | cut -f1-3 -d' ')"
 if [[ $ver == "jruby"* ]] ; then
 	cd ruby
 	starttime="$(date +%s%N)"
