@@ -63,11 +63,17 @@ else
 fi
 
 # JRuby
-ver="$(/usr/bin/env jruby -v 2>&1 | cut -f1-3 -d' ')"
+if [[ $TRAVIS == "true" ]]; then
+	rvm install jruby
+	jruby="/usr/bin/env ruby"
+else
+	jruby="/usr/bin/env jruby"
+fi
+ver="$($jruby -v 2>&1 | cut -f1-3 -d' ')"
 if [[ $ver == "jruby"* ]] ; then
 	cd ruby
 	starttime="$(date +%s%N)"
-	/usr/bin/env jruby satzgenerator.rb 1000000 >/dev/null 2>&1
+	$jruby satzgenerator.rb 1000000 >/dev/null 2>&1
 	echo "$ver |" $(duration $starttime)
 	cd ..
 else
