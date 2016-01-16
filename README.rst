@@ -1,6 +1,9 @@
 Satzgenerator
 =============
 
+.. image:: https://travis-ci.org/davidak/satzgenerator.svg?branch=master
+    :target: https://travis-ci.org/davidak/satzgenerator
+
 Als Kind haben wir bei meiner Oma öfter das Spiel `Opa plätschert lustig in der Badewanne <http://www.mama-tipps.de/tipp/Opa-plaetschert-Badewanne.html>`_ gespielt.
 Dabei entstehen zufällige und absurde Sätze. Das war immer sehr witzig.
 
