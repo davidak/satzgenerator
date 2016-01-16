@@ -5,7 +5,7 @@ before_install:
   - sudo add-apt-repository ppa:vala-team/ppa -y
   - curl http://dist.crystal-lang.org/apt/setup.sh | sudo bash
   - sudo apt-get update -qq
-  - sudo apt-get install -qq pypy valac openjdk-8-jre crystal
+  - sudo apt-get install -qq pypy valac openjdk-8-jre crystal jruby
   - /usr/bin/env pypy --version
 install: true
 script:
