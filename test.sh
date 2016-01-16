@@ -47,3 +47,15 @@ if [[ $ver == "Python 2"* ]] ; then
 else
 	echo "PyPy 2 not installed"
 fi
+
+# Perl
+ver="$(/usr/bin/env perl --version 2>&1 | grep "This is perl" | perl -pe 's/[^(]*\(([^)]*)\)[^(]*/$1\n/g')"
+if [[ $ver == "v"* ]] ; then
+	cd perl
+	starttime="$(date +%s%N)"
+	/usr/bin/env perl satzgenerator.pl 1000000 >/dev/null 2>&1
+	echo "Perl $ver |" $(duration $starttime)
+	cd ..
+else
+	echo "Perl not installed"
+fi
