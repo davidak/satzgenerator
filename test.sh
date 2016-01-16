@@ -69,7 +69,6 @@ if [[ $ver == "jruby"* ]] ; then
 	starttime="$(date +%s%N)"
 	/usr/bin/env jruby satzgenerator.rb 1000000 >/dev/null 2>&1
 	echo "$ver |" $(duration $starttime)
-	/usr/bin/env jruby satzgenerator.rb 10
 	cd ..
 else
 	echo "JRuby not installed"
