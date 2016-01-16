@@ -14,3 +14,5 @@ Erst in Perl, dann Python, woraus https://satzgenerator.de/ entstanden ist.
 Mittlerweile ist der Satzgenerator sowas wie mein persönliches `Hallo Welt-Programm <http://de.wikipedia.org/wiki/Hallo-Welt-Programm>`_.
 
 Hier werden die Satzgeneratoren in verschiedenen Programmiersprachen gesammelt.
+
+Der Code wird von `Travis CI <https://travis-ci.org/davidak/satzgenerator>`_ gebaut und die `Performance <Performance.md>`_ getestet.
