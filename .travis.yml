@@ -1,6 +1,6 @@
 before_install:
   - printf "CPU:"
-  - grep model\ name /proc/cpuinfo | head -1 | cut -f2 -d:
+  - "grep model\ name /proc/cpuinfo | head -1 | cut -f2 -d:"
   - printf "CPU Cores:" && printf " " # workaround for https://github.com/travis-ci/travis-yaml/issues/81
   - grep -c processor /proc/cpuinfo
   - sudo add-apt-repository ppa:pypy/ppa -y
