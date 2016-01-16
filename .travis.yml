@@ -1,0 +1,13 @@
+before_install:
+	- sudo add-apt-repository ppa:pypy/ppa -y
+	- sudo apt-get update -qq
+	- sudo apt-get install -qq pypy
+install: true
+script:
+	- make
+	- make test
+sudo: required
+dist: trusty
+notifications:
+	email:
+		- post@davidak.de

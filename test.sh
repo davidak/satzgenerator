@@ -10,14 +10,40 @@ duration () {
 }
 
 echo "Interpreter | Laufzeit in s"
-echo "--- | ---"
+echo "--- | ---:"
 
 # Python 2
 ver="$(/usr/bin/env python --version 2>&1)"
 if [[ $ver == "Python 2"* ]] ; then
+	cd python
 	starttime="$(date +%s%N)" # nanoseconds_since_epoch
-	sleep 1.5s
+	/usr/bin/env python satzgenerator.py 1000000 >/dev/null 2>&1
 	echo $ver "|" $(duration $starttime)
+	cd ..
 else
 	echo "Python 2 not installed"
+fi
+
+# Python 3
+ver="$(/usr/bin/env python3 --version 2>&1)"
+if [[ $ver == "Python 3"* ]] ; then
+	cd python
+	starttime="$(date +%s%N)"
+	/usr/bin/env python3 satzgenerator.py 1000000 >/dev/null 2>&1
+	echo $ver "|" $(duration $starttime)
+	cd ..
+else
+	echo "Python 3 not installed"
+fi
+
+# PyPy 2
+ver="$(/usr/bin/env pypy --version 2>&1)"
+if [[ $ver == "Python 2"* ]] ; then
+	cd python
+	starttime="$(date +%s%N)"
+	/usr/bin/env pypy satzgenerator.py 1000000 >/dev/null 2>&1
+	echo "PyPy 2 |" $(duration $starttime)
+	cd ..
+else
+	echo "PyPy 2 not installed"
 fi
