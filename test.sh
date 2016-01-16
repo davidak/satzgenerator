@@ -62,6 +62,18 @@ else
 	echo "Ruby not installed"
 fi
 
+# JRuby
+ver="$(jruby --version 2>&1 | cut -f1-3 -d' ')"
+if [[ $ver == "jruby "* ]] ; then
+	cd ruby
+	starttime="$(date +%s%N)"
+	/usr/bin/env jruby satzgenerator.rb 1000000 >/dev/null 2>&1
+	echo "$ver |" $(duration $starttime)
+	cd ..
+else
+	echo "JRuby not installed"
+fi
+
 # Perl
 ver="$(/usr/bin/env perl --version 2>&1 | grep "This is perl" | perl -pe 's/[^(]*\(([^)]*)\)[^(]*/$1\n/g')"
 if [[ $ver == "v"* ]] ; then
