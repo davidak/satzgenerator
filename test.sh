@@ -87,7 +87,7 @@ else
 fi
 
 # Java
-ver="$(java --version 2>&1)"
+ver="$(java -version 2>&1)"
 if [[ $ver == "java "* ]] ; then
 	cd java
 	ver="$(java -version 2>&1 | grep version | cut -d '"' -f2)"
@@ -97,4 +97,16 @@ if [[ $ver == "java "* ]] ; then
 	cd ..
 else
 	echo "Java not installed"
+fi
+
+# Crystal
+ver="$(crystal --version 2>&1 | cut -f1 -d'(')"
+if [[ $ver == "Crystal "* ]] ; then
+	cd crystal
+	starttime="$(date +%s%N)"
+	./Satzgenerator 1000000 >/dev/null 2>&1
+	echo "$ver|" $(duration $starttime)
+	cd ..
+else
+	echo "crystal not installed"
 fi
