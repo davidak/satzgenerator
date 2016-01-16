@@ -1,9 +1,11 @@
-default: all
+all: genie java
+.PHONY: all genie java
 
 genie:
-	@(cd genie ; valac satzgenerator.gs)
+	cd genie ; valac satzgenerator.gs
 
-all: genie
+java:
+	cd java ; javac Satzgenerator.java
 
 test:
 	@(./test.sh)

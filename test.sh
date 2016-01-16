@@ -36,16 +36,30 @@ else
 	echo "Python 3 not installed"
 fi
 
-# PyPy 2
+# PyPy
 ver="$(/usr/bin/env pypy --version 2>&1)"
-if [[ $ver == "Python 2"* ]] ; then
+if [[ $ver == "Python"* ]] ; then
 	cd python
+	ver="$(/usr/bin/env pypy --version 2>&1 | grep PyPy | cut -f2 -d' ')"
 	starttime="$(date +%s%N)"
 	/usr/bin/env pypy satzgenerator.py 1000000 >/dev/null 2>&1
-	echo "PyPy 2 |" $(duration $starttime)
+	echo "PyPy $ver |" $(duration $starttime)
 	cd ..
 else
-	echo "PyPy 2 not installed"
+	echo "PyPy not installed"
+fi
+
+# Ruby
+ver="$(/usr/bin/env ruby --version 2>&1)"
+if [[ $ver == "ruby "* ]] ; then
+	cd ruby
+	ver="$(/usr/bin/env ruby --version 2>&1 | cut -f2 -d' ')"
+	starttime="$(date +%s%N)"
+	/usr/bin/env ruby satzgenerator.rb 1000000 >/dev/null 2>&1
+	echo "Ruby $ver |" $(duration $starttime)
+	cd ..
+else
+	echo "Ruby not installed"
 fi
 
 # Perl
@@ -61,7 +75,7 @@ else
 fi
 
 # Genie
-ver="$(valac --version)"
+ver="$(valac --version 2>&1)"
 if [[ $ver == "Vala "* ]] ; then
 	cd genie
 	starttime="$(date +%s%N)"
@@ -70,4 +84,17 @@ if [[ $ver == "Vala "* ]] ; then
 	cd ..
 else
 	echo "valac not installed"
+fi
+
+# Java
+ver="$(java --version 2>&1)"
+if [[ $ver == "java "* ]] ; then
+	cd java
+	ver="$(java -version 2>&1 | grep version | cut -d '"' -f2)"
+	starttime="$(date +%s%N)"
+	java Satzgenerator 1000000 >/dev/null 2>&1
+	echo "Java ($ver) |" $(duration $starttime)
+	cd ..
+else
+	echo "Java not installed"
 fi
