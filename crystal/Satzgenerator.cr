@@ -1,3 +1,9 @@
+struct Tuple
+  def sample
+    self[rand({{@type.size}})]
+  end
+end
+
 module Satzgenerator
   extend self
 
@@ -11,51 +17,46 @@ module Satzgenerator
   end
 
   # Textdateien einlesen
-  $vornamen_m = lese("../data/vornamen_m.txt")
-  $vornamen_w = lese("../data/vornamen_w.txt")
-  $vornamen = $vornamen_m + $vornamen_w
-  $verben = lese("../data/verben.txt")
-  $adjektive = lese("../data/adjektive.txt")
-  $orte = lese("../data/orte.txt")
+  VORNAMEN = lese("../data/vornamen_w.txt").concat(lese("../data/vornamen_m.txt"))
+  VERBEN = lese("../data/verben.txt")
+  ADJEKTIVE = lese("../data/adjektive.txt")
+  ORTE = lese("../data/orte.txt")
 
   # Listen
-  $beziehung_m = [ "Vater", "Bruder", "Mann", "Sohn", "Onkel", "Opa", "Cousin", "Freund", "Kollege", "Mitbewohner" ]
-  $beziehung_w = [ "Mutter", "Schwester", "Frau", "Tochter", "Tante", "Oma", "Cousine", "Freundin", "Kollegin", "Mitbewohnerin" ]
-  $beziehung = $beziehung_m + $beziehung_w
-  $possessivpronomen_m = [ "Mein", "Dein", "Sein", "Ihr" ]
-  $spezial = [ "Er", "Sie", "Jemand", "Niemand", "Ein Lehrer", "Ein Polizist", "Ein Beamter", "Ein Arzt", "Der Alkoholiker", "Ein normaler Mensch" ]
+  BEZIEHUNG_M = {"Vater", "Bruder", "Mann", "Sohn", "Onkel", "Opa", "Cousin", "Freund", "Kollege", "Mitbewohner"}
+  BEZIEHUNG_W = {"Mutter", "Schwester", "Frau", "Tochter", "Tante", "Oma", "Cousine", "Freundin", "Kollegin", "Mitbewohnerin"}
+  BEZIEHUNG = Tuple.new(*BEZIEHUNG_M, *BEZIEHUNG_W)
+  POSSESSIVPRONOMEN_M = {"Mein", "Dein", "Sein", "Ihr"}
+  SPEZIAL = {"Er", "Sie", "Jemand", "Niemand", "Ein Lehrer", "Ein Polizist", "Ein Beamter", "Ein Arzt", "Der Alkoholiker", "Ein normaler Mensch"}
 
   # Person generieren
-  def person
-    case Random.rand(6)
+  def person(io)
+    case rand(6)
     when 0
-      p = $vornamen.sample + "s " + $beziehung.sample
+      io << VORNAMEN.sample << "s " << BEZIEHUNG.sample
     when 1
-      p = $possessivpronomen_m.sample + " " + $beziehung_m.sample
+      io << POSSESSIVPRONOMEN_M.sample << ' ' << BEZIEHUNG_M.sample
     when 2
-      p = $possessivpronomen_m.sample + "e " + $beziehung_w.sample
+      io << POSSESSIVPRONOMEN_M.sample << "e " << BEZIEHUNG_W.sample
     when 3
-      p = $spezial.sample
+      io << SPEZIAL.sample
     else
-      p = $vornamen.sample
+      io << VORNAMEN.sample
     end
   end
 
   # Satz generieren
-  def satz
-    return person + " " + $verben.sample + " " + $adjektive.sample + " " + $orte.sample + "."
+  def satz(io)
+    person(io)
+    io << ' ' << VERBEN.sample << ' ' << ADJEKTIVE.sample << ' ' << ORTE.sample << ".\n"
   end
 
-  # anzahl setzen, wenn eine zahl als parameter angegeben wurde, sonst 1
-  begin
-    anzahl = ARGV[0].to_i
-  rescue
-    anzahl = 1
-  end
+end
 
-  # Sätze entsprechend anzahl ausgeben
-  anzahl.times do
-    puts satz
-  end
+# anzahl setzen, wenn eine zahl als parameter angegeben wurde, sonst 1
+anzahl = ARGV[0]?.try(&.to_i?) || 1
 
+# Sätze entsprechend anzahl ausgeben
+anzahl.times do
+  Satzgenerator.satz(STDOUT)
 end
