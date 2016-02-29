@@ -13,3 +13,17 @@ Mittlerweile ist der Satzgenerator sowas wie mein persönliches `Hallo Welt-Prog
 Hier werden die Satzgeneratoren in verschiedenen Programmiersprachen gesammelt.
 
 Der Code wird automatisch von `Travis CI <https://travis-ci.org/davidak/satzgenerator>`_ gebaut und die `Performance <Performance.md>`_ getestet.
+
+Beispiele
+---------
+
+1. Die Kampflesbe überlebt unrasiert bei den Affen im Zoo.
+2. Mein Kumpel kackt buckelig im Dunkeln.
+3. Eine Prostituierte kotzt fett im Knast.
+4. Dein Mitarbeiter lernt träge auf dem Weg zur Arbeit.
+5. Ein Beamter katasysiert unkreativ auf dem Friedhof.
+6. Ein Polizist verdirbt breitbeinig in der Gemeinschaftsdusche.
+7. Seine Partnerin furzt angeberisch beim ersten Date.
+8. Ihr Freund schmilzt gebückt im Puff.
+9. Ein Zuhälter beginnt lieblos auf dem Spielplatz.
+10. Ein Schwuler singt übermächtig im Schwimmbad.
